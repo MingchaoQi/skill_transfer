@@ -48,6 +48,8 @@ relationship3_3 = Relationship(object_2_3, 'relative position', object_2_2, pos=
 relationship3_4 = Relationship(object_2_4, 'relative position', object_2_3, pos='0.125 -0.10 0', quat='1 0 0 0',
                                inertial_pos='0 0 0 0', inertial_quat='1 0 0 0')
 
+
+
 skill_graph.create(relationship3_1)
 skill_graph.create(relationship3_2)
 skill_graph.create(relationship3_3)
