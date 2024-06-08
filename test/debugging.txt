@@ -1,0 +1,25 @@
+bug1:
+问题：
+开共享对象文件: 不是目录 (search paths /usr/lib/x86_64-linux-gnu/dri:\$${ORIGIN}/dri:/usr/lib/dri, suffix _dri)
+libGL error: failed to load driver: iris
+libGL error: MESA-LOADER: failed to open swrast: /usr/lib/dri/swrast_dri.so: 无法打开共享对象文件: 不是目录 (search paths /usr/lib/x86_64-linux-gnu/dri:\$${ORIGIN}/dri:/usr/lib/dri, suffix _dri)
+libGL error: failed to load driver: swrast
+libGL error: MESA-LOADER: failed to open iris: /usr/lib/dri/iris_dri.so: 无法打开共享对象文件: 不是目录 (search paths /usr/lib/x86_64-linux-gnu/dri:\$${ORIGIN}/dri:/usr/lib/dri, suffix _dri)
+libGL error: failed to load driver: iris
+libGL error: MESA-LOADER: failed to open iris: /usr/lib/dri/iris_dri.so: 无法打开共享对象文件: 不是目录 (search paths /usr/lib/x86_64-linux-gnu/dri:\$${ORIGIN}/dri:/usr/lib/dri, suffix _dri)
+libGL error: failed to load driver: iris
+libGL error: MESA-LOADER: failed to open swrast: /usr/lib/dri/swrast_dri.so: 无法打开共享对象文件: 不是目录 (search paths /usr/lib/x86_64-linux-gnu/dri:\$${ORIGIN}/dri:/usr/lib/dri, suffix _dri)
+libGL error: failed to load driver: swrast
+原因：
+缺少open3d库文件
+解决方法：conda install open3d
+
+bug2:
+问题：
+Traceback (most recent call last):
+  File "/home/qi/anaconda3/envs/robosuite2/lib/python3.8/site-packages/robosuite/utils/binding_utils.py", line 199, in __del__
+  File "/home/qi/anaconda3/envs/robosuite2/lib/python3.8/site-packages/robosuite/renderers/context/egl_context.py", line 149, in free
+  File "/home/qi/anaconda3/envs/robosuite2/lib/python3.8/site-packages/OpenGL/error.py", line 230, in glCheckError
+OpenGL.raw.EGL._errors.EGLError: <exception str() failed>
+Exception ignored in: <function EGLGLContext.__del__ at 0x72d978d014c0>
+解决方法：
