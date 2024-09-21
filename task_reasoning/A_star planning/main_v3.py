@@ -6,7 +6,7 @@ import robosuite_task_zoo
 import matplotlib.pyplot as plt
 from robosuite.utils.control_utils import *
 import robosuite.utils.transform_utils as T
-from motion_planning_v2 import Motion_planning
+from motion_planning_v3 import Motion_planning
 from py2neo import Graph, Node, Relationship, Path, Subgraph, NodeMatcher, RelationshipMatcher
 import scipy.linalg as linalg
 

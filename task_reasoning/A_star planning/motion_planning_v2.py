@@ -209,15 +209,6 @@ class Motion_planning():
             print("the path is not found!")
             return None
 
-    def recover_pos(self, point_collection):  ##将离散路径点转换回它们在连续空间中的坐标
-        Recover = []
-        for point in point_collection:
-            recover_point = [self.dx * point[0] + self.min_x, self.dy * point[1] + self.min_y,
-                             self.dz * point[2] + self.min_z]
-            Recover.append(recover_point)
-
-        return Recover
-
     def path_smoothing(self, Path_points, t_final, freq):
         """
         使用样条插值平滑路径，以减少路径中的突变，生成平滑的运动轨迹

@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="99e480d3-394d-462d-917f-cad938cb78ee" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/Research.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Research.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/envs/robosuite-task-zoo/robosuite_task_zoo/environments/manipulation/hammer_place.py" beforeDir="false" afterPath="$PROJECT_DIR$/envs/robosuite-task-zoo/robosuite_task_zoo/environments/manipulation/hammer_place.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force_x.txt" beforeDir="false" afterPath="$PROJECT_DIR$/force_x.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force_y.txt" beforeDir="false" afterPath="$PROJECT_DIR$/force_y.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force_z.txt" beforeDir="false" afterPath="$PROJECT_DIR$/force_z.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/force_x.txt" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/force_x.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/force_y.txt" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/force_y.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/force_z.txt" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/force_z.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_reasoning/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/main_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/main_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/main_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/main_v3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/motion_planning_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/motion_planning_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/motion_planning_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/motion_planning_v3.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,18 +28,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MingchaoQi"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MingchaoQi&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MingchaoQi/skill_transfer.git",
-    "accountId": "824cd3aa-7493-4915-bd7b-c695d227043f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MingchaoQi/skill_transfer.git&quot;,
+    &quot;accountId&quot;: &quot;fdc1d393-4596-465f-8849-09606eb99a16&quot;
   }
-}]]></component>
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/anaconda3/envs/skill_transfer/lib/python3.8/site-packages/robosuite-task-zoo/robosuite_task_zoo/environments/manipulation/hammer_place.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/task_reasoning/A_star planning/main_v2.py" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -38,21 +53,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.main_v2.executor": "Run",
-    "Python.main_v3.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.main_v2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main_v3.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/qi/robot_space/usercode/src/A_star_joint_position&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
-        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.347" />
+        <option value="bundled-python-sdk-c2d6afa66fbe-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.347" />
       </set>
     </attachedChunks>
   </component>
@@ -66,6 +87,22 @@
       <updated>1717825990583</updated>
       <workItem from="1717825992951" duration="6000" />
       <workItem from="1717829543583" duration="208000" />
+      <workItem from="1721964469991" duration="461000" />
+      <workItem from="1721964941492" duration="328000" />
+      <workItem from="1721965278935" duration="2888000" />
+      <workItem from="1722050375079" duration="2230000" />
+      <workItem from="1722139046799" duration="32000" />
+      <workItem from="1722144589931" duration="41000" />
+      <workItem from="1722144649404" duration="14000" />
+      <workItem from="1722144680375" duration="831000" />
+      <workItem from="1722147207187" duration="14000" />
+      <workItem from="1723112898342" duration="9000" />
+      <workItem from="1723112940536" duration="12000" />
+      <workItem from="1725269228342" duration="492000" />
+      <workItem from="1725269739449" duration="2000" />
+      <workItem from="1725269752023" duration="1195000" />
+      <workItem from="1725270968713" duration="52000" />
+      <workItem from="1726079721108" duration="4000" />
     </task>
     <servers />
   </component>
@@ -74,6 +111,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Research$main_v2.coverage" NAME="main_v2 覆盖结果" MODIFIED="1717829573846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/task_reasoning/A_star planning" />
+    <SUITE FILE_PATH="coverage/skill_transfer$main_v2.coverage" NAME="main_v2 覆盖结果" MODIFIED="1722052585011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/task_reasoning/A_star planning" />
+    <SUITE FILE_PATH="coverage/skill_transfer$main_v3.coverage" NAME="main_v3 Coverage Results" MODIFIED="1725270915357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/task_reasoning/A_star planning" />
     <SUITE FILE_PATH="coverage/Research$main_v3.coverage" NAME="main_v3 覆盖结果" MODIFIED="1717829597832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/task_reasoning/A_star planning" />
   </component>
 </project>

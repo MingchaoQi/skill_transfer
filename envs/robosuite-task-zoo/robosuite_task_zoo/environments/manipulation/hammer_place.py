@@ -482,7 +482,7 @@ class HammerPlaceEnv(SingleArmEnv):
         # return np.array(self.sim.data.body_xpos[self.object_joint_ids["cabinet_joint"]])
 
     @property
-    def door_joint_pos_1(self):
+    def door_joint_pos(self):
         return np.array(self.sim.data.qpos[self.hinge_qpos_addr])
         # return np.array(self.sim.data.body_xpos[self.object_joint_ids["hinge_joint"]])
 
