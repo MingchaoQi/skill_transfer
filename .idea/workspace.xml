@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e480d3-394d-462d-917f-cad938cb78ee" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Research.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Research.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/envs/robosuite-task-zoo/robosuite_task_zoo/environments/manipulation/hammer_place.py" beforeDir="false" afterPath="$PROJECT_DIR$/envs/robosuite-task-zoo/robosuite_task_zoo/environments/manipulation/hammer_place.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/force_x.txt" beforeDir="false" afterPath="$PROJECT_DIR$/force_x.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/force_y.txt" beforeDir="false" afterPath="$PROJECT_DIR$/force_y.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/force_z.txt" beforeDir="false" afterPath="$PROJECT_DIR$/force_z.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/force_x.txt" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/force_x.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/force_y.txt" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/force_y.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/force_z.txt" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/force_z.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/main_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/main_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/main_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/main_v3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/motion_planning_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/motion_planning_v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_reasoning/A_star planning/motion_planning_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_reasoning/A_star planning/motion_planning_v3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A_star planning/motion_planning.py" beforeDir="false" afterPath="$PROJECT_DIR$/A_star planning/motion_planning.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +60,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.347" />
-        <option value="bundled-python-sdk-c2d6afa66fbe-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.347" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.22855.92" />
+        <option value="bundled-python-sdk-b068d85d1acf-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.22855.92" />
       </set>
     </attachedChunks>
   </component>
@@ -103,6 +91,9 @@
       <workItem from="1725269752023" duration="1195000" />
       <workItem from="1725270968713" duration="52000" />
       <workItem from="1726079721108" duration="4000" />
+      <workItem from="1726976219533" duration="1000" />
+      <workItem from="1726976230056" duration="4869000" />
+      <workItem from="1727096921020" duration="3000" />
     </task>
     <servers />
   </component>
