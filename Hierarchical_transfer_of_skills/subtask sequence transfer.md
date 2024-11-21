@@ -1,12 +1,12 @@
-                                                                      Task-level subtask sequence transfer
+# Task-level subtask sequence transfer
+Subtask sequences planned in similar task scenarios are always akin, such as in the tasks of opening doors and drawers. To enable the transfermof task-level subtask sequences across similar scenarios, it is essential for the agent to have a comprehensive understanding of the transfer tasks and scenarios. 
 
-一、前言：
-在机器人操作任务中，确保任务完成的首要因素就是要有合理的任务规划，但是对于很多相似的操作任务来说，每次重新进行任务规划得到的结果都是相似的，因此能否寻找一种方式，把机器人操作任务的任务规划能够在相似的场景之间进行迁移就成为了我们感兴趣的问题。
-对于传统的操作任务的任务规划来说，首先要确定的就是根据任务场景的状态和智能体自身（主要是机器人）的能力合理规划出要操作的目标和先后次序，这需要智能体对场景具有一定的理解能力。这种理解能力的获得可以通过视觉信息获取，如视觉的rgb图像和点云图像，也可以通过常识知识获取，如搜索相应的知识库（如互联网），获取当前操作物体的特性。在本研究实践中，我们默认已经通过技术手段获取了任务场景中各物体的属性知识，需要完成相似但不同场景之间的任务规划。
-我们借助大模型带来的语义理解能力和推理能力，完成任务规划的迁移，为此我们尝试构建一套prompt范式，确保我们任务迁移的成功。
-二、方法方式：
-第一步：预准备阶段：描述想要LLM完成的任务，并让LLM复述你的想法，看是否准确：
-I will give you a manipulation task description and I need you help me to finish the task planning. The task description consists of three parts: The main task, the reference task, and the scene description. 
+In this context, we introduce LLM, leveraging its powerful reasoning and generalization capabilities to achieve the aforementioned goals. This paper is based on the contextual learning and thoughtchain prompts in prompt-based learning, constructing a new four-stage prompt word paradigm.
+
+**First, we provide the LLM with a comprehensive description of the complex planning task and the state graph descriptions from the skill library.**
+
+```
+I will give you a manipulation task description and I need you help me to finish the task <br> planning. The task description consists of three parts: The main task, the reference task, and the scene description. 
 
 The main task and the reference task have the same structure, the reference task's planning has been known while the main task's planning is not known. Each task consists of several sub-tasks, and each sub-task consists of three parts: "action", "require_states" and "obtain_states". "require_states" are initial states before"action" and  "obtain_states" are final states after "action". By adopting this structure, task planning can reflect changes in the scene. 
 
@@ -15,9 +15,10 @@ The scene description and task planning are knowledge graphs written by py2neo a
 The aim of task planning is that when the reference task and the scene description have been known, and I give a new task named the main task, you can give me a reasonable task planning result.
 
 Do you understand? If yes, re-say what I mean detailedly.
-第二步：依次描述操作场景，使用代码描述。代码格式越统一，LLM理解起来越方便：
-The following is the basic scene description, which reflects the relationships between the object and its sub-objects:
+```
+**Next, we enable the LLM to comprehend the entire knowledge graph of the operations skill library. We input the skill library into the LLM as Neo4j-based code.**
 
+```
 ## The Python code about knowledge graph of scene description
 object_1 = Node('object', name='cabinet')
 object_1_1 = Node('sub_object', name='base', mass='0.35')
@@ -69,15 +70,20 @@ skill_graph.create(relationship3_1)
 skill_graph.create(relationship4_1)
 skill_graph.create(relationship3_2)
 skill_graph.create(relationship3_3)
-第三步：描述参考任务规划，需要注意的是任务规划我们采用的形式既不是代码也不是语言描述，而是我们自己定义的一套表达形式，因此在输入完整的任务规划前，要先详细描述这套表达形式的含义：
-before starting the task planning, I would like to give you more information and rules about the task planning description. 
+```
+**In the third step, we guide the LLM to deeply understand the spatial semantic information in the scene graph of the skill library.**
+
+```
+Before starting the task planning, I would like to give you more information and rules about the task planning description. 
 As for the relationships, we assume that there exists five connection types: attach, joint, in, on, and around. The default connection type is "attach". In the task planning, we use the "object -> connection types -> object" to describe this relationship. We use the form: "object(property)" to present the object and its properties, and as for relationships, we use the form "connection type(property)" to present the relationship and its property.
 for example:
 base(mass='0.35')->joint(joint_damping='100.0')->drawer link(mass='7.85')
 
 If you understand, use the form "object(property) -> connection types(property) -> object(property)" to present the objects/sub_objects and their properties.
-在LLM复述正确后，给出其完整的参考任务规划。
-第四步：参考任务规划，并给出主任务要求，完成任务规划的迁移。在这一步中，约束/规定”notes”是很重要的，这表明我们希望任务规划生成哪些信息、在哪里选择参考的信息、不希望生成何种信息等。
+```
+**Finally, we provide reference planning for existing complex tasks and subtask sequence migration requirements for new scenes.**
+
+```
 Great! Now I will give you the reference task and its planning.
 reference task: "open the cabinet", the target object is "cabinet".
 task planning:
@@ -86,12 +92,8 @@ task planning:
 {"sub_task":2, "action":"pick", "require_states": gripper(open) -> around -> cabinet handle, "obtain_states": gripper(closed) -> around -> cabinet handle}
 {"sub_task":3, "action":"move", "require_states": gripper(closed) -> around -> Cabinet Handle && base -> joint(joint_range=0) -> drawer link, "obtain_states":gripper(closed) -> around -> Cabinet Handle and base -> joint(joint_range=-0.1) -> drawer link}
 {"sub_task":4, "action":"drop", "require_states": gripper(closed), "obtain_states": gripper(open)}
-
 Notes: The "gripper" is the manipulator, which can be seen as an object. It has two states: open and closed. sub-task 1~4 is the order of the sub-task.
 In task planning, the "action" can be chosen from "move", "pick" and "drop", and the sub_objects that exist in the task planning should be part of the target object.
-
 The notes should be followed in the task planning.
-
 My question is: the main task is "open the door lock", and the target object is "door lock". Give me the task planning of the main task based on the knowledge of the reference task and scene description.
-
-在LLM每次生成回答后，都要检查生成的回答是否准确，如果出现不准确的情况，就要指出并纠正。这是一个不断反馈-更新的过程。
+```
