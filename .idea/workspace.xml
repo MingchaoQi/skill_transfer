@@ -6,7 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="99e480d3-394d-462d-917f-cad938cb78ee" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A_star planning/motion_planning.py" beforeDir="false" afterPath="$PROJECT_DIR$/A_star planning/motion_planning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlled_trials/Evaluate.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlled_trials/cabinet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlled_trials/open_cabinet_to_open_door_step1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlled_trials/open_cabinet_to_open_door_step2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlled_trials/open_door_directly.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controlled_trials/reward_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/envs/robosuite-task-zoo/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/envs/robosuite/AUTHORS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/envs/robosuite/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/envs/robosuite/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skill_library/knowledge_graph.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +104,9 @@
       <workItem from="1726976219533" duration="1000" />
       <workItem from="1726976230056" duration="4869000" />
       <workItem from="1727096921020" duration="3000" />
+      <workItem from="1732028857626" duration="224000" />
+      <workItem from="1732158166512" duration="120000" />
+      <workItem from="1732159181929" duration="301000" />
     </task>
     <servers />
   </component>

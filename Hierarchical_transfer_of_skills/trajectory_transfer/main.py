@@ -6,7 +6,7 @@ import robosuite_task_zoo
 import matplotlib.pyplot as plt
 from robosuite.utils.control_utils import *
 import robosuite.utils.transform_utils as T
-from A_star_motion_planning import Motion_planning
+from Hierarchical_transfer_of_skills.trajectory_transfer.motion_planning import Motion_planning
 from py2neo import (
     Graph,
     Node,
@@ -19,19 +19,27 @@ from py2neo import (
 import scipy.linalg as linalg
 
 
-def PD_control(last_pos, cur_pos, goal_pos, goal_vel, kp, kd):  # PD控制生成控制指令
+def PD_control(last_pos, cur_pos, goal_pos, goal_vel, kp, kd):
+    """
+    PD controller for generating control commands.
+    """
     cur_vel = (cur_pos - last_pos) * 20
     a = kp * (goal_pos - cur_pos) + kd * (goal_vel - cur_vel)
     return a
 
 
 def vel_control(cur_pos, goal_pos, k):
+    """
+    Velocity control based on proportional gain.
+    """
     a = k * (goal_pos - cur_pos)
-
     return a
 
 
 def Force_control(xe, dxe, Fe, Mp, Bp, Cp, freq):
+    """
+    Impedance control using force feedback.
+    """
     ddxe = (Fe - Bp * dxe - Cp * xe) / Mp
     dxe_next = dxe + ddxe / freq
     xe_next = xe + dxe_next / freq
@@ -39,17 +47,16 @@ def Force_control(xe, dxe, Fe, Mp, Bp, Cp, freq):
     return xe_next
 
 
-def trace_trajectory_Astar(
-    d0, goal_pos, tf, freq, gri_open=True
-):  # 达不到柔顺控制的要求（姿态方面达不到，位置方面可以达到）
+def trace_trajectory_Astar(d0, goal_pos, tf, freq, gri_open=True):
+    """
+    Generate and follow a trajectory using the A* path planning algorithm.
+    """
     plan = Motion_planning(env=env, dx=0.01, dy=0.01, dz=0.01, gripper_open=gri_open)
     Points_recover = plan.path_searching(start=d0, end=goal_pos)
     if Points_recover is not None:
-        X, Y, Z = plan.path_smoothing(
-            Path_points=Points_recover, t_final=tf, freq=freq
-        )  ##轨迹使用二次B样条曲线进行平滑处理
+        X, Y, Z = plan.path_smoothing(Path_points=Points_recover, t_final=tf, freq=freq)
     else:
-        print("the path is not found!!")
+        print("The path is not found!!")
         return None
     t0 = env.sim.data.time
     action = np.zeros(action_dim)
@@ -71,21 +78,22 @@ def trace_trajectory_Astar(
             v_s = np.append(plan.d_dot[i], np.zeros(action_dim - 3))
             while (env.sim.data.time - t0) < plan.t[i]:
                 MyEuler1 = R.from_quat(env._eef_xquat).as_euler("zyx")
+                # MyEuler1 = T.mat2euler(T.quat2mat(env._eef_xquat))
                 current_pos = np.append(env._eef_xpos, np.zeros(action_dim - 3))
                 kp = np.array([20, 20, 20, 0, 0, 0])
                 kp = np.append(kp, np.ones(action_dim - 6))
+                # action = vel_control(current_pos, x_s, k=kp)
                 kd = 0.7 * np.sqrt(kp)
                 action = PD_control(last_pos, current_pos, x_s, v_s, kp, kd)
 
-                obs, reward, done, info = env.step(
-                    action
-                )  # take action in the environment
+                obs, reward, done, info = env.step(action)
                 observation.append(obs)
                 Reward.append(reward)
-                env.render()  # render on display
+                env.render()
         else:
             goal_pos = x_s
             MyEuler1 = R.from_quat(env._eef_xquat).as_euler("zyx")
+            # MyEuler1 = T.mat2euler(T.quat2mat(env._eef_xquat))
             current_pos = np.append(
                 env._eef_xpos, np.array([MyEuler1[2], MyEuler1[1], MyEuler1[0], 0])
             )
@@ -93,52 +101,45 @@ def trace_trajectory_Astar(
             kp = np.append(kp, np.ones(action_dim - 6))
             action = vel_control(current_pos, goal_pos, k=kp)
 
-            obs, reward, done, info = env.step(action)  # take action in the environment
+            obs, reward, done, info = env.step(action)
             observation.append(obs)
             Reward.append(reward)
-            env.render()  # render on display
+            env.render()
         if i % 2 == 0:
             ee_force = env.sim.data.sensordata[0:3]
             Force = np.append(Force, ee_force)
         last_pos = current_pos
-    print("-----------------end the trajectory--------------------")
     MyEuler = T.quat2axisangle(env._eef_xquat)
     print(
-        "ee_pos_x=",
+        "End effector position:",
         np.append(env._eef_xpos, np.array([MyEuler[0], MyEuler[1], MyEuler[2]])),
     )
-    print("goal_pos=", x_s)
+    print("Goal position:", x_s)
 
     Force = Force.reshape(-1, 3)
 
     return observation, Reward, Force
 
 
-# ----------------------------------------------------------------------------------------------------------------------
-# create environment instance
+# The following sections initialize the environment and implement specific trajectories.
 robots = "IIWA"
 env = robosuite_task_zoo.environments.manipulation.HammerPlaceEnv(
     robots,
     has_renderer=True,
-    # gripper_types="RobotiqThreeFingerGripper",
     has_offscreen_renderer=True,
     use_camera_obs=True,
     render_camera="frontview",
     control_freq=20,
-    controller_configs=suite.load_controller_config(
-        default_controller="OSC_POSE"
-    ),  # 操作空间位置控制
+    controller_configs=suite.load_controller_config(default_controller="OSC_POSE"),
 )
 
 env.reset()
-print("-------------------start the trajectory-------------------------")
-# set the action dim
-action_dim = env.action_dim  # in robot_env.py
+action_dim = env.action_dim
 neutral = np.zeros(action_dim)
+print("handle_pos_init=", env._handle_xpos)
+print("slide_handle_pos_init=", env._slide_handle_xpos)
 
-# 识图谱中检索关节的自由度及相关信息
 skill_graph = Graph("bolt://localhost:7687", auth=("neo4j", "Qi121220"))
-
 relationship_matcher = RelationshipMatcher(skill_graph)
 r = relationship_matcher.match(None, r_type="DOF and relative position").all()
 
@@ -165,72 +166,55 @@ joint_damping["door"] = r[1].get("joint_damping")
 
 def rotate_mat(axis, radian):
     """
-    利用旋转矩阵并结合知识图谱中提取的相关信息，计算门把手的最终运动位置
-    旋转矩阵 欧拉角
+    Calculate the final movement position of the door handle using rotation matrix.
     """
     rot_matrix = linalg.expm(np.cross(np.eye(3), axis / linalg.norm(axis) * radian))
     return rot_matrix
 
 
-# 分别是x,y和z轴以及旋转轴
+# Define axes for rotation.
 axis_x, axis_y, axis_z = [1, 0, 0], [0, 1, 0], [0, 0, 1]
-# 使用列表形式存放数据，可避免数据转换的麻烦
 rand_axis = [0, 0, 1]
-# 旋转角度为joint_range
-# yaw = joint_range["door"][1]
-yaw = 0.4
-# 返回旋转矩阵
+yaw = joint_range["door"][1]
 rot_matrix = rotate_mat(rand_axis, yaw)
-# 计算点绕着轴运动后的点(变换到门坐标系)
+
 door_joint_pos = env.door_pos - np.array(joint_pos["door"])
-print("门铰链的初始位置：", env.door_joint_pos)
-print("门把手初始位置：", env._handle_xpos)
-# x = np.array(env._handle_xpos)
 x = np.array(env._handle_xpos) - np.array([door_joint_pos[0], door_joint_pos[1], 0])
-# 旋转后的坐标，需要再次变换到世界坐标系
 x1 = np.dot(rot_matrix, x)
 x1 = x1 + np.array([door_joint_pos[0], door_joint_pos[1], 0])
-print("门把手目标位置：", x1)
+print("Target position of the door handle：", x1)
 
-# 第一段轨迹
+
 MyEuler = R.from_quat(env._eef_xquat).as_euler("xyz")
 d_0 = env._eef_xpos
 print("d0=", d_0)
-# goal_pos = env._slide_handle_xpos
 goal_pos = env._handle_xpos
 t_f = 10.0
-# 检验t
 t1 = env.sim.data.time
 obs1, _, force1 = trace_trajectory_Astar(d_0, goal_pos, tf=t_f, freq=20)
 print("delta_t=", env.sim.data.time - t1)
 print("handle_pos_fin=", env._handle_xpos)
 print("slide_handle_pos_fin=", env._slide_handle_xpos)
 
-# 第二段轨迹（开关夹爪）
+
 action = neutral.copy()
 action[-1] = 1
 for i in range(20):
     obs_2, reward, done, info = env.step(action)
-    env.render()  # render on display
+    env.render()
 print("handle_pos_fin=", env._handle_xpos)
 print("slide_handle_pos_fin=", env._slide_handle_xpos)
 
-## 第三段轨迹
+
 MyEuler = R.from_quat(env._eef_xquat).as_euler("zyx")
 d_0 = env._eef_xpos
 print("d0=", d_0)
-# goal_pos = env._handle_xpos + np.array([0, 0.2, 0.0])
 goal_pos = x1
 goal_force = np.array([0.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0])
-##检验t
 t1 = env.sim.data.time
 obs_3, _, force2 = trace_trajectory_Astar(
     d_0, goal_pos, tf=t_f, freq=20, gri_open=False
 )
-print("delta_t=", env.sim.data.time - t1)
-print("handle_pos_fin=", env._handle_xpos)
-print("slide_handle_pos_fin=", env._slide_handle_xpos)
-print("门把手目标位置：", x1)
 
 env.close()
 

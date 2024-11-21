@@ -31,7 +31,6 @@ object_2 = Node('object', name='door_lock')
 object_2_1 = Node('sub_object', name='frame', mass='7.85398')
 object_2_2 = Node('sub_sub_object', name='door', mass='2.43455', diaginertia='0.0913751 0.0521615 0.043714')
 object_2_3 = Node('sub_sub_sub_object', name='latch', mass='0.1', diaginertia='0.0483771 0.0410001 0.0111013')
-# object_2_4 = Node('sub_sub_sub_sub_object', name='door handle', size='0.02') ##这一行应该去掉
 skill_graph.create(object_2)
 skill_graph.create(object_2_1)
 skill_graph.create(object_2_2)
@@ -49,14 +48,13 @@ relationship3_2 = Relationship(object_2_2, 'relative position', object_2_1, conn
 relationship3_3 = Relationship(object_2_3, 'relative position', object_2_2, connection_type='attach', pos='-0.175 0 -0.025', quat='1 0 0 0',
                                inertial_pos='-0.017762 0.0138544 0',
                                inertial_quat='0.365653 0.605347 -0.36522 0.605365')
-# relationship3_4 = Relationship(object_2_4, 'relative position', object_2_3, pos='0.125 -0.10 0', quat='1 0 0 0',
-#                                inertial_pos='0 0 0 0', inertial_quat='1 0 0 0')
+
 skill_graph.create(relationship2_1)
 skill_graph.create(relationship3_1)
 skill_graph.create(relationship4_1)
 skill_graph.create(relationship3_2)
 skill_graph.create(relationship3_3)
-# skill_graph.create(relationship3_4)
+
 
 
 task_1 = Node('task', name='open_drawer', target='cabinet')
