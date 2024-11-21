@@ -5,7 +5,8 @@ via Skill Library and Tactile Representation<br>
 
 Mingchao Qi, Yuanjin Li, Xing Liu<sup>* </sup>, Yizhai Zhang, Pangfeng Huang
 
-**Paper Access:** [📝PDF](https://arxiv.org/pdf/2411.11714) | [arXiv](https://arxiv.org/abs/2411.11714)<br>
+**Paper Access:** [📝PDF](https://arxiv.org/pdf/2411.11714) | [arXiv](https://arxiv.org/abs/2411.11714)
+
 **Hardware Support:** Kuka iiwa14
 
 
