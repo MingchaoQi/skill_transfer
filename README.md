@@ -15,8 +15,8 @@ Mingchao Qi, Yuanjin Li, Xing Liu<sup>* </sup>, Yizhai Zhang, Pangfeng Huang
 
 # 📚 Overview
 
-![](./files/Overview_v2.png)
-![](./files/skill_transfer_experiment.png)
+![](./files/Overview_v2.pdf)
+![](./files/skill_transfer_experiment.pdf)
 
 # 🛠️ Installation
 This project is implemented based on **Robosuite** in simulation and on the **KUKA iiwa14** and **GelSight Mini** in the real-world environment. Therefore, it is necessary to install [ROS2 Humble](https://github.com/ros2)、[gelsightinc/gsrobotics](https://github.com/gelsightinc/gsrobotics) and [lbr_fri_ros2_stack](https://github.com/lbr-stack/lbr_fri_ros2_stack) prior to running this project to operate the robotic arm and tactile sensor.
